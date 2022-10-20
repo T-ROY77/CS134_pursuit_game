@@ -64,6 +64,7 @@ void Emitter::update(glm::vec3 p) {
 
 		//set random spawn point
 		sprite.setPosition(glm::vec3(ofRandom(ofGetWindowWidth() - 1), ofRandom(ofGetWindowHeight() - 1), 0));
+
 		//sprite.setPosition(trans);
 
 		sprite.birthtime = time;
