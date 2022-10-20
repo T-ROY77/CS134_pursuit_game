@@ -46,7 +46,8 @@ void Sprite::setImage(ofImage img) {
 }
 
 glm::vec3 Sprite::heading(glm::vec3 p) {
-	glm::vec3 o = p - trans;
+	glm::vec3 o = glm::vec3(0,1,0);
+	o = glm::rotate(o, glm::radians(rot), glm::vec3(0, 0, 1));
 	glm::normalize(o);
 	return o;
 }
@@ -57,9 +58,14 @@ glm::vec3 Sprite::heading(glm::vec3 p) {
 //*********************************************************************************************//
 void Sprite::moveSprite(glm::vec3 p) {
 	glm::vec3 head = heading(p);
+	rot = glm::dot(p - trans, head);
+
 	trans += head * speed / ofGetFrameRate();
 
-	rot = head.y /head.x ;
+
+	//find angle between heading and player pos
+	// dot product
+
 }
 
 glm::mat4 Sprite::getMatrix() {
